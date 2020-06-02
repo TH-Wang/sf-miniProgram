@@ -1,0 +1,51 @@
+/* pages/index/index.wxss */
+@keyframes popUp{
+  0% {transform: translateX(-100%);}
+  80% {transform: translateX(10%);}
+  100% {transform: translateX(0%);}
+}
+
+.container{
+  height: 100%;
+  position: relative;
+}
+.body{
+  position: relative;
+}
+.slidebar{
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.3s;
+  transform: translateX(-100%);
+}
+.main{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow-y: scroll;
+  transition: all 0.3s;
+}
+.side-main{
+  width: calc(100% - 150rpx);
+}
+.main-title{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding-left: 40rpx;
+  box-sizing: border-box;
+  color: #4b4b4b;
+  background-color: #fffa65;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* 侧边栏菜单隐藏样式 */
+.show-slide{
+  /* animation: popUp 0.3s ease forwards; */
+  transform: translateX(0);
+}

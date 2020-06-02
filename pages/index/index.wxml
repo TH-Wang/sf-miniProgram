@@ -1,0 +1,19 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <header title="{{mainTitle}}" bind:change-slide="handleSlideStatus"></header>
+  <view class="body" style="height:calc(100% - {{header.totalHeight}}px)">
+    <slide-menu
+      menus="{{menuList}}"
+      show="{{slideShow}}"
+      class="slidebar {{slideShow ? 'show-slide' : ''}}"
+    ></slide-menu>
+    <view class="main {{mainMode == 'side' ? 'side-main' : ''}}">
+      <scroll-view scroll-y>
+        <food-item
+          wx:for="{{foodList}}" wx:key="id"
+          list="{{item}}" mode="{{mainMode}}"
+        ></food-item>
+      </scroll-view>
+    </view>
+  </view>
+</view>

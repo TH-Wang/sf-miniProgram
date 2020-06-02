@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "header": "/components/header/header",
+    "food-item": "/components/foodItem/foodItem",
+    "slide-menu": "/components/slideMenu/slideMenu"
+  }
+}
