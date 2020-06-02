@@ -1,0 +1,13 @@
+<!--components/header/header.wxml-->
+<view style="{{headerStyle}}" class="container">
+  <view class="menu-icon">
+    <text class="iconfont icon-l-menu {{slideStatus ? 'zoom-out' : 'zoom-in'}}"
+      bindtap="openSlideMenu"
+    ></text>
+    <text class="iconfont icon-l-error {{slideStatus ? 'zoom-in' : 'zoom-out'}}"
+      bindtap="closeSlideMenu"
+    ></text>
+  </view>
+  <text class="iconfont icon-l-search"></text>
+  <text class="title">{{titleText}}</text>
+</view>

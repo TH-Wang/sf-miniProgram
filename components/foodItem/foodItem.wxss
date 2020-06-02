@@ -1,0 +1,183 @@
+/* components/foodItem/foodItem.wxss */
+.container{
+  width: 100%;
+  padding: 30rpx 50rpx;
+  display: flex;
+  box-sizing: border-box;
+}
+
+/* 侧边栏出现时main的表现样式 */
+.side-container{
+  padding: 20rpx 26rpx;
+}
+.side-container .cover-container{
+  width: 180rpx;
+  height: 180rpx;
+}
+.side-container .main{
+  width: calc(100% - 180rpx);
+  padding: 12rpx 0 12rpx 24rpx;
+}
+.side-container .main .descs{
+  opacity: 0;
+}
+.side-container .main .price .origin-price{
+  display: block;
+  margin-top: 16rpx;
+}
+.side-container .main .button-box{
+  bottom: 8rpx;
+}
+
+/* 过渡 */
+.container,
+.side-container,
+.cover-container,
+.main,
+.descs,
+.origin-price,
+.button-box{
+  transition: all 0.3s;
+}
+
+/* 图片容器 */
+.cover-container{
+  width: 220rpx;
+  height: 220rpx;
+  background-size: cover;
+  background-position: center;
+  border-radius: 7px;
+  position: relative;
+}
+
+/* 标签 */
+.tag-box{
+  height: 36rpx;
+  position: absolute;
+  left: 3px;
+  top: -4px;
+}
+.tag{
+  display: inline-block;
+  width: 64rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  text-align: center;
+  color: white;
+  font-size: 10px;
+  border-radius: 6rpx;
+  vertical-align: top;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+}
+.tag-hot{
+  margin-right: 6rpx;
+  background-image: linear-gradient(25deg, #f79100, #f7b400, #f5d503, #eff608);
+}
+.tag-new{
+  background-image: linear-gradient(25deg, #3ae374, #67e6dc);
+}
+
+/* 主体 */
+.main{
+  width: calc(100% - 220rpx);
+  box-sizing: border-box;
+  padding: 22rpx 0rpx 22rpx 40rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* 名字和描述 */
+.title{
+  color: #555;
+  font-weight: bold;
+  font-size: 32rpx;
+}
+.descs{
+  font-size: 12px;
+  color: #777;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* 价格 */
+.price{
+  color: #ff7f50;
+  font-size: 44rpx;
+  font-weight: bold;
+  font-family: "等线";
+}
+.suffix{
+  margin-left: 3px;
+  font-size: 12px;
+}
+.origin-price{
+  margin-left: 3px;
+  font-size: 12px;
+  color: #999;
+  text-decoration: line-through #777;
+  font-style: italic;
+}
+
+/* 添加减少按钮 */
+.button-box{
+  width: 164rpx;
+  height: 50rpx;
+  position: absolute;
+  bottom: 16rpx;
+  right: 0;
+  border-radius: 30rpx;
+  overflow: hidden;
+}
+/* 按钮组展开时，为了避免渲染bug */
+.full-button-box{
+  background-color: #fffa65;
+}
+.button-count, .button{
+  background-color: #fffa65;
+  transition: all 0.3s;
+}
+.button-count{
+  width: 64rpx;
+  height: 100%;
+  line-height: 48rpx;
+  text-align: center;
+  color: #3d3d3d;
+  font-size: 32rpx;
+  position: absolute;
+  top: 0;
+  left: 50rpx;
+}
+.button{
+  width: 50rpx;
+  height: 100%;
+  line-height: 44rpx;
+  position: absolute;
+  top: 0;
+  text-align: center;
+  color: #ff4d4d;
+}
+.button-rdc{
+  left: 0;
+  border-top-left-radius: 30rpx;
+  border-bottom-left-radius: 30rpx;
+  font-size: 18px;
+}
+.button-add{
+  line-height: 46rpx;
+  right: 0;
+  border-top-right-radius: 30rpx;
+  border-bottom-right-radius: 30rpx;
+  font-size: 17px;
+}
+
+.hidden-button{
+  transform: translateX(80rpx);
+}
+.single-add{
+  z-index: 1;
+  width: 84rpx;
+  border-radius: 30rpx;
+}

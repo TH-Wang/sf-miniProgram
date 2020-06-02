@@ -1,0 +1,8 @@
+<!--components/slideMenu/slideMenu.wxml-->
+<view class="container">
+  <view class="menu-box {{show ? 'show-menu-box' : ''}}"
+    wx:for="{{menus}}" wx:key="id"
+    style="transition-delay: {{0.05*index}}s"
+  ><text>{{item.text}}</text>
+  </view>
+</view>

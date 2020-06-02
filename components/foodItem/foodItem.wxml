@@ -1,0 +1,38 @@
+<!--components/foodItem/foodItem.wxml-->
+<wxs module="computed">
+function getPrice(price){
+  if(price)
+    return price.toFixed(2)
+}
+module.exports = {
+  getPrice: getPrice
+}
+</wxs>
+
+<view class="container {{mode == 'side' ? 'side-container' : ''}}">
+  <view class="cover-container" style="background-image: url({{list.cover}})">
+    <view class="tag-box">
+      <text wx:if="{{list.isHot}}" class="tag tag-hot">热销</text>
+      <text wx:if="{{list.isNew}}" class="tag tag-new">新品</text>
+    </view>
+  </view>
+  <view class="main">
+    <text class="title">{{list.fname}}</text>
+    <text class="descs">{{list.descs}}</text>
+    <view class="price">
+      <text>{{computed.getPrice(list.salePrice)}}</text>
+      <text class="suffix">元</text>
+      <text class="origin-price">{{computed.getPrice(list.price)}}</text>
+    </view>
+    <view class="button-box {{count > 0 ? 'full-button-box' : ''}}">
+      <view class="button button-rdc {{count > 0 ? '' : 'hidden-button'}}" 
+        bindtap="handleReduce"
+      >－</view>
+      <view class="button button-add {{count > 0 ? '' : 'single-add'}}"
+        bindtap="handleAdd"
+      >＋</view>
+      <text class="button-count {{count > 0 ? '' : 'hidden-button'}}"
+      >{{count > 0 ? count : ''}}</text>
+    </view>
+  </view>
+</view>

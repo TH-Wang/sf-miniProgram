@@ -1,0 +1,39 @@
+/* components/header/header.wxss */
+@import "/assets/iconfont/iconfont.wxss";
+
+.container{
+  display: flex;
+  align-items: center;
+}
+.menu-icon{
+  width: 20px;
+  height: 20px;
+  position: relative;
+  margin-left: 36rpx;
+}
+.menu-icon .iconfont{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.iconfont{
+  font-weight: bold;
+  font-size: 18px;
+  transition: all 0.2s;
+}
+.icon-l-search{
+  margin-left: 36rpx;
+}
+.title{
+  margin-left: 36rpx;
+  color: #4b4b4b;
+}
+
+.zoom-in{
+  transform: scale(1);
+  opacity: 1;
+}
+.zoom-out{
+  transform: scale(0.5);
+  opacity: 0;
+}
