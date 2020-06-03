@@ -1,0 +1,60 @@
+/* components/listBlock/listBlock.wxss */
+.title-box{
+  height: 90rpx;
+  position: relative;
+}
+
+.back{
+  width: 112rpx;
+  height: 52rpx;
+  border-top-right-radius: 50rpx;
+  border-bottom-right-radius: 50rpx;
+  position: absolute;
+  top: 20rpx;
+  left: 0;
+  transform-origin: left;
+}
+
+.title{
+  font-size: 24rpx;
+  padding: 10rpx 30rpx 10rpx 36rpx;
+  transition: all 0.3s;
+  position: absolute;
+  top: 20rpx;
+  left: 0;
+  color: #4b4b4b;
+}
+
+.isHot-back{
+  background-image: linear-gradient(90deg, #ff4d4d, #ffaf40);
+}
+.isNew-back{
+  background-image: linear-gradient(90deg, #3ae374, #67e6dc);
+}
+.isSale-back{
+  background-image: linear-gradient(90deg, #f7ec17, #fffb7d);
+}
+.normal-back{
+  background-image: linear-gradient(90deg, #f4e4ff, rgb(245, 243, 252));
+}
+
+.white-title{
+  color: white;
+}
+
+.side-title-box{
+  height: 80rpx;
+}
+.side-title-box .back{
+  top: 14rpx;
+  transform: scale(0.6);
+  opacity: 0;
+}
+.side-title-box .title{
+  color: #4b4b4b;
+}
+.side-title-box,
+.back,
+.title{
+  transition: all 0.3s;
+}

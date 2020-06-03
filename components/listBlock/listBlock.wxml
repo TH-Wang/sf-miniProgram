@@ -1,0 +1,14 @@
+<!--components/listBlock/listBlock.wxml-->
+<view class="container">
+  <view class="title-box {{mode == 'side' ? 'side-title-box' : ''}}">
+    <view class="back {{block.mode}}-back"></view>
+    <text
+      class="title {{block.mode == 'isHot' || block.mode == 'isNew' ? 'white-title' : ''}}"
+    >{{block.typename}}</text>
+  </view>
+  <food-item
+    class="food-item"
+    wx:for="{{block.list}}" wx:key="id"
+    mode="{{mode}}" list="{{item}}"
+  ></food-item>
+</view>
