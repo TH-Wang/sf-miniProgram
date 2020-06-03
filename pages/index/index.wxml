@@ -6,14 +6,23 @@
       menus="{{menuList}}"
       show="{{slideShow}}"
       class="slidebar {{slideShow ? 'show-slide' : ''}}"
+      activeMenu="{{menuIndex}}" backMode="{{menuMode}}"
     ></slide-menu>
     <view class="main {{mainMode == 'side' ? 'side-main' : ''}}">
-      <scroll-view scroll-y>
-        <food-item
-          wx:for="{{foodList}}" wx:key="id"
-          list="{{item}}" mode="{{mainMode}}"
-        ></food-item>
+      <scroll-view
+        class="scroll"
+        scroll-y="{{true}}"
+        bindscroll="handleScroll"
+      >
+        <list-block
+          class="list-block"
+          wx:for="{{foodList}}" wx:key="typename"
+          block="{{item}}" mode="{{mainMode}}"
+          data-typename="{{item.typename}}"
+          data-mode="{{item.mode}}"
+        ></list-block>
       </scroll-view>
     </view>
   </view>
+  <shop-cart></shop-cart>
 </view>

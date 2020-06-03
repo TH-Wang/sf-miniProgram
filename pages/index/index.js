@@ -1,4 +1,5 @@
 // pages/index/index.js
+import { throttle } from '../../utils/util'
 const app = getApp()
 
 Page({
@@ -8,18 +9,12 @@ Page({
    */
   data: {
     slideShow: false,
-    menuList: [
-      {id: 1, text: "热销"},
-      {id: 2, text: "新品"},
-      {id: 3, text: "面类"},
-      {id: 4, text: "套饭"},
-      {id: 5, text: "干锅"},
-      {id: 6, text: "热销"},
-      {id: 7, text: "热销"}
-    ],
+    menuList: [],
     foodList: [],
     header: null,
-    mainTitle: `新品推荐😍`,
+    menuIndex: 0,
+    menuMode: "isHot",
+    mainTitle: null,
     mainMode: "full"
   },
 
@@ -30,14 +25,61 @@ Page({
       mainMode: nowSlide ? "side" : "full"
     })
   },
+  handleScroll: throttle(async function(e){
+    let rectsArr = await this.getBoundingRects();
+    // 如果滑到了第一个板块
+    if(rectsArr[0].top >= 0){
+      this.setData({
+        mainTitle: rectsArr[0].typename,
+        menuIndex: 0,
+        menuMode: "isHot"})
+      return
+    }
+    // 滑到中间板块
+    for(var i = 0; i < rectsArr.length-1; i++){
+      if(rectsArr[i].top < 0 && rectsArr[i+1].top > 0){
+        this.setData({
+          mainTitle: rectsArr[i].typename,
+          menuIndex: i,
+          menuMode: rectsArr[i].mode
+        })
+        break;
+      }
+    }
+    // 滑动最后一个板块
+    if(rectsArr[rectsArr.length-1].top < 0)
+      this.setData({
+        mainTitle: rectsArr[rectsArr.length-1].typename,
+        menuIndex: rectsArr.length-1,
+        menuMode: "normal"
+      })
+  }, 500),
+  getBoundingRects(){
+    return new Promise((resolve, reject) => {
+      let headerHeight = app.globalData.headerStyle.totalHeight;
+      this.createSelectorQuery().selectAll('.list-block').boundingClientRect(rects => {
+        rects.forEach(item => {
+          item.top
+        })
+      }).exec(res => {
+        resolve(res[0].map(item => ({
+          typename: item.dataset.typename,
+          mode: item.dataset.mode,
+          top: item.top - headerHeight
+        })))
+      })
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.setData({
+      menuList: app.globalData.menuList,
+      foodList: app.globalData.foodList,
       header: app.globalData.headerStyle,
-      foodList: app.globalData.foodList
+      mainTitle: app.globalData.menuList[0].typename
     })
   },
 
@@ -45,7 +87,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**

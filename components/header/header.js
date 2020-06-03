@@ -17,7 +17,6 @@ Component({
    */
   data: {
     headerStyle: null,
-    titleText: null,
     slideStatus: false
   },
 
@@ -48,7 +47,7 @@ Component({
         padding-top:${h.headerPaddingTop}px;`
       this.setData({
         headerStyle: style,
-        titleText: this.properties.title.replace(/\s/g, '')
+        title: this.properties.title.replace(/\s/g, '')
       })
     }
   }

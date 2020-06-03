@@ -43,6 +43,9 @@
   background-color: #fffa65;
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
 }
+.scroll{
+  height: 100%;
+}
 
 /* 侧边栏菜单隐藏样式 */
 .show-slide{

@@ -1,8 +1,29 @@
 <!--components/slideMenu/slideMenu.wxml-->
+<wxs module="computed">
+function getColor(activeMenu, idx, mode){
+  var color = activeMenu == idx && (mode == 'isHot' || mode == 'isNew') ? 'white' : '#4b4b4b'
+  return color
+}
+module.exports = { getColor: getColor }
+</wxs>
+
 <view class="container">
-  <view class="menu-box {{show ? 'show-menu-box' : ''}}"
-    wx:for="{{menus}}" wx:key="id"
-    style="transition-delay: {{0.05*index}}s"
-  ><text>{{item.text}}</text>
+  <view class="back {{backMode}}-back"
+    style="transform: translateY({{90*activeMenu}}rpx);"
+  ></view>
+  <view class="menu-list">
+    <view class="menu-box {{show ? 'show-menu-box' : ''}}"
+      wx:for="{{menus}}" wx:key="id"
+      style="transition-delay: {{0.05*index}}s"
+      bindtap="handleMenuChange"
+      data-index="{{index}}"
+      data-mode="{{item.mode}}"
+    >
+      <text class="menu-text"
+        style="color: {{computed.getColor(activeMenu, index, item.mode)}}"
+        data-index="{{index}}"
+        data-mode="{{item.mode}}"
+      >{{item.typename}}</text>
+    </view>
   </view>
 </view>

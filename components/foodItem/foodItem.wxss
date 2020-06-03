@@ -64,7 +64,7 @@
   line-height: 36rpx;
   text-align: center;
   color: white;
-  font-size: 10px;
+  font-size: 20rpx;
   border-radius: 6rpx;
   vertical-align: top;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
@@ -95,7 +95,7 @@
   font-size: 32rpx;
 }
 .descs{
-  font-size: 12px;
+  font-size: 24rpx;
   color: #777;
   white-space:nowrap;
   overflow:hidden;
@@ -163,14 +163,14 @@
   left: 0;
   border-top-left-radius: 30rpx;
   border-bottom-left-radius: 30rpx;
-  font-size: 18px;
+  font-size: 46rpx;
 }
 .button-add{
   line-height: 46rpx;
   right: 0;
   border-top-right-radius: 30rpx;
   border-bottom-right-radius: 30rpx;
-  font-size: 17px;
+  font-size: 40rpx;
 }
 
 .hidden-button{

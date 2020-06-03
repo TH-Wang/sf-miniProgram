@@ -9,5 +9,5 @@
     ></text>
   </view>
   <text class="iconfont icon-l-search"></text>
-  <text class="title">{{titleText}}</text>
+  <text class="title">{{title}}</text>
 </view>

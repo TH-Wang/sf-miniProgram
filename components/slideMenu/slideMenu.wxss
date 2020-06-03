@@ -4,21 +4,71 @@
   height: 100%;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
-  background-color: whitesmoke;
+  background-color: rgb(250, 250, 250);
   font-size: 13px;
   overflow: hidden;
+}
+
+.back{
+  width: 130rpx;
+  height: 80rpx;
+  background-color: #fcfcf0;
+  border-radius: 16rpx;
+  transition: all 0.3s;
+  position: absolute;
+  top: 15rpx;
+  left: 10rpx;
+  transition: all 0.2s;
+}
+
+.menu-list{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 10rpx;
+  left: 0;
 }
 .menu-box{
   width: 100%;
   height: 90rpx;
-  line-height: 90rpx;
-  text-align: center;
+  padding: 0 20rpx;
+  box-sizing: border-box;
   transform: translateX(-100%);
   transition: all 0.4s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  text-align: center;
 }
-.active-menu{
-  background-color: #eee;
+.menu-box .menu-text{
+  color: #111111;
+  transition: all 0.2s;
+  /* 文本超出两行省略 */
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
+
+/* 侧边菜单弹出 */
 .show-menu-box{
   transform: translateX(0);
+}
+
+/* 背景样式 */
+.isHot-back{
+  background-color: rgba(255, 77, 77, .75);
+}
+.isNew-back{
+  background-color: rgba(58, 227, 116, .8);
+}
+.isSale-back{
+  background-color: rgba(255, 250, 101, .9);
+}
+.normal-back{
+  background-color: #eee;
 }

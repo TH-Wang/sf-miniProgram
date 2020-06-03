@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "header": "/components/header/header",
-    "food-item": "/components/foodItem/foodItem",
-    "slide-menu": "/components/slideMenu/slideMenu"
+    "list-block": "/components/listBlock/listBlock",
+    "slide-menu": "/components/slideMenu/slideMenu",
+    "shop-cart": "/components/shopCart/shopCart"
   }
 }
