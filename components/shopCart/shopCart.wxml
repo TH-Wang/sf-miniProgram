@@ -1,0 +1,17 @@
+<!--components/shopCart/shopCart.wxml-->
+<view class="container">
+  <view class="button-box">
+    <image class="cart-image" src="/assets/img/gouwuche_1.png">
+      <view class="count-sign">1</view>
+    </image>
+    <view class="cart-button">
+      <text class="text">购物车</text>
+      <text class="iconfont icon-l-goToTop"></text>
+    </view>
+    <view class="price-box">
+      <text class="prefix">￥</text>
+      <text class="price">12.00</text>
+      <text class="sale">优惠:\n5.88元</text>
+    </view>
+  </view>
+</view>

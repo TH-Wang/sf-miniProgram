@@ -1,0 +1,80 @@
+/* components/shopCart/shopCart.wxss */
+@import "/assets/iconfont/iconfont.wxss";
+
+.button-box{
+  width: 90%;
+  height: 96rpx;
+  position: fixed;
+  bottom: 15px;
+  left: 50%;
+  z-index: 999;
+  transform: translateX(-50%);
+  background-color: #924fb1;
+  border-radius: 50rpx;
+  box-shadow: 0 2px 20px -3px rgb(148, 90, 177);
+}
+.cart-image{
+  width: 120rpx;
+  height: 120rpx;
+  position: absolute;
+  top: -40rpx;
+  left: 30rpx;
+}
+.count-sign{
+  width: 36rpx;
+  height: 30rpx;
+  background-color: #ff4d4d;
+  color: white;
+  border-radius: 30rpx;
+  font-size: 18rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 16rpx;
+  right: 4rpx;
+}
+.cart-button{
+  width: 160rpx;
+  height: 64rpx;
+  line-height: 70rpx;
+  position: absolute;
+  top: 16rpx;
+  right: 38rpx;
+  border-radius: 16rpx;
+  background-color: #FECE0A;
+  color: #712694;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.text{
+  margin-top: -4rpx;
+  margin-right: 4rpx;
+}
+
+.price-box{
+  height: 70rpx;
+  position: absolute;
+  right: 220rpx;
+  color: white;
+  display: flex;
+  align-items: flex-end;
+}
+.prefix{
+  transform: translateY(-4rpx);
+  font-size: 28rpx;
+  font-family: "等线";
+}
+.price{
+  font-size: 46rpx;
+  font-weight: bold;
+  font-family: "等线";
+}
+.sale{
+  transform: translateY(4rpx);
+  margin-left: 20rpx;
+  color: #ffaf40;
+  font-size: 24rpx;
+}
