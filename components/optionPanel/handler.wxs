@@ -1,0 +1,30 @@
+module.exports = {
+  // computed：包装价格
+  getPrice: function(price){
+    if(price) return price.toFixed(2)
+  },
+  // computed: 解析json数据
+  parseData: function(data){
+    if(data) return JSON.parse(data)
+  },
+  // computed：判断是否被选中
+  hasChecked: function(index, list){
+    return list.indexOf(index) != -1
+  },
+  // handler: 处理加入购物车
+  handleAddCart: function(e, own){
+    var checkedList = e.target.dataset.list
+    var components = own.selectAllComponents('.option-item')
+    var indexList = [], valueList = [], result = []
+    components.forEach(function(item){
+      dataset = item.getDataset()
+      indexList.push(dataset.index)
+      valueList.push(dataset.value)
+    })
+    indexList.forEach(function(item, index){
+      if(checkedList.indexOf(item) != -1)
+        result.push(valueList[index])
+    })
+    own.callMethod("handleAddFood", result.join("、"))
+  }
+}
