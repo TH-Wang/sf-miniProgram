@@ -1,4 +1,6 @@
 // components/foodItem/foodItem.js
+const page = getCurrentPages()
+
 Component({
   /**
    * 组件的属性列表
@@ -28,11 +30,28 @@ Component({
     handleReduce(){
       if(this.data.count > 0)
         this.setData({ count: --this.data.count })
+        this.triggerEvent(
+          "cart", 
+          {type: "reduce", data: {name: this.properties.list.fname}}
+        )
     },
     handleAdd(){
-      this.setData({
-        count: ++this.data.count
-      })
+      let thisFood = this.properties.list;
+      if(thisFood.opts == "[]"){
+        this.setData({ count: ++this.data.count })
+        let added = {
+          name: thisFood.fname,
+          count: 1,
+          isSale: thisFood.isSale,
+          salePrice: thisFood.salePrice,
+          price: thisFood.price,
+          sum: thisFood.salePrice,
+          oriSum: thisFood.price
+        }
+        this.triggerEvent("cart", {type: "add", data: added})
+      } else {
+        this.triggerEvent("switch", thisFood)
+      }
     }
   }
 })
