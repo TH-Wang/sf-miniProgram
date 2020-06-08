@@ -46,6 +46,12 @@
 .scroll{
   height: 100%;
 }
+.list-block:last-child::after{
+  content: '';
+  display: block;
+  width: 100%;
+  height: 135rpx;
+}
 
 /* 侧边栏菜单隐藏样式 */
 .show-slide{

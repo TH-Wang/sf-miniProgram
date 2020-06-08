@@ -21,25 +21,31 @@
   100% {transform: rotateX(-30deg) translate(-50%, -20%); opacity: 0;}
 }
 
-/* 主容器 */
-.container{
+.main{
   width: 74%;
   height: auto;
-  padding: 36rpx 36rpx 0 36rpx;
-  border-radius: 24rpx;
-  background-color: white;
   position: absolute;
   top: 50%;
   left: 50%;
-  box-sizing: border-box;
   transform: rotateX(-30deg) translate(-50%, 30%);
   transform-origin: top;
+  border-radius: 24rpx;
+  overflow: hidden;
 }
 .in{
   animation: in 0.3s forwards;
 }
 .out{
   animation: out 0.3s forwards;
+}
+
+/* 主要信息容器 */
+.container{
+  width: 100%;
+  height: auto;
+  padding: 36rpx 36rpx 0 36rpx;
+  box-sizing: border-box;
+  background-color: white;
 }
 
 /* 菜品信息 */
@@ -101,7 +107,7 @@
   background-color: #A56FBF;
 }
 
-/* 添加按钮 */
+/* 加入购物车按钮 */
 .button-box{
   margin-top: 30rpx;
   padding: 20rpx 0 40rpx 0;
@@ -117,4 +123,69 @@
   font-size: 24rpx;
   text-align: center;
   border-radius: 60rpx;
+}
+
+/* 已添加商品列表 */
+.added-list-box{
+  max-height: 300rpx;
+  background-color: white;
+}
+.added-item{
+  padding: 16rpx 36rpx;
+  box-sizing: border-box;
+  border-top: solid 1px #eee;
+}
+.added-name,
+.added-sum,
+.count-button,
+.reduce-button,
+.add-button,
+.count{
+  display: inline-block;
+  vertical-align: middle;
+}
+.added-name{
+  font-size: 24rpx;
+  width: 40%;
+}
+.added-sum{
+  width: 30%;
+  text-align: center;
+  color: #ff7f50;
+}
+.added-price{
+  font-size: 28rpx;
+}
+.added-suffix{
+  margin-left: 2px;
+  font-size: 16rpx;
+}
+.count-button{
+  width: 30%;
+  height: 46rpx;
+  border-radius: 30rpx;
+  background-color: #FFFB48;
+  color: #8749A5;
+}
+.reduce-button, .add-button{
+  width: 30%;
+  height: 46rpx;
+  line-height: 46rpx;
+  text-align: center;
+  color: #ff7f50;
+  font-weight: bold;
+  vertical-align: top;
+}
+.reduce-button{
+  font-size: 40rpx;
+}
+.add-button{
+  line-height: 46rpx;
+}
+.count{
+  width: 40%;
+  height: 46rpx;
+  line-height: 46rpx;
+  text-align: center;
+  font-size: 26rpx;
 }

@@ -20,9 +20,16 @@
           block="{{item}}" mode="{{mainMode}}"
           data-typename="{{item.typename}}"
           data-mode="{{item.mode}}"
+          bind:switch="handleSwitchOptions"
+          bind:cart="reactiveCart"
         ></list-block>
       </scroll-view>
     </view>
   </view>
-  <shop-cart></shop-cart>
+  <shop-cart cartList="{{carts}}"></shop-cart>
+  <option-panel
+    show="{{showOptionPanel}}"
+    foodData="{{optionPanelData}}"
+    bind:cart="reactiveCart"
+  ></option-panel>
 </view>

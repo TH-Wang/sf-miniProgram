@@ -7,47 +7,69 @@
   bindtap="handleClose"
   style="visibility:{{show ? 'visible' : 'hidden'}}"
 >
-  <view class="container {{mainClass}}">
-    <text class="name">{{foodData.fname}}</text>
-    <view class="price-box">
-      <text class="price">{{wxs.getPrice(foodData.salePrice)}}</text>
-      <text class="suffix">元</text>
-      <text
-        class="origin-price"
-        wx:if="{{foodData.isSale}}"
-      >{{wxs.getPrice(foodData.price)}}</text>
-    </view>
-    <text class="descs">{{foodData.descs}}</text>
-    <view
-      class="option-group"
-      wx:for="{{wxs.parseData(foodData.opts)}}"
-      wx:key="id"
-    >
-      <view class="option-title">{{item.title}}</view>
-      <view>
-        <view
-          wx:for="{{item.opts}}"
-          wx:for-item="opt"
-          wx:for-index="idx"
-          wx:key="index"
-          class="option-item {{wxs.hasChecked(index+'-'+idx, checkedList) ? 'checked-item' : ''}}"
-          data-index="{{index+'-'+idx}}"
-          data-value="{{opt}}"
-          bindtap="handleCheck"
-        >{{opt}}</view>
+  <view class="main {{mainClass}}">
+    <!-- 主要信息 -->
+    <view class="container">
+      <text class="name">{{foodData.fname}}</text>
+      <view class="price-box">
+        <text class="price">{{wxs.getPrice(foodData.salePrice)}}</text>
+        <text class="suffix">元</text>
+        <text
+          class="origin-price"
+          wx:if="{{foodData.isSale}}"
+        >{{wxs.getPrice(foodData.price)}}</text>
       </view>
-    </view>
-    <view class="button-box">
+      <text class="descs">{{foodData.descs}}</text>
       <view
-        class="add-cart-button"
-        bindtap="{{wxs.handleAddCart}}"
-        data-list="{{checkedList}}"
-      >添加购物车</view>
-    </view>
-    <view class="added-list-box">
-      <view wx:for="{{addedList}}" wx:key="index">
-        {{item.name}}×{{item.count}} -- {{item.sum}} -- {{item.oriSum}}
+        class="option-group"
+        wx:for="{{wxs.parseData(foodData.opts)}}"
+        wx:key="id"
+      >
+        <view class="option-title">{{item.title}}</view>
+        <view>
+          <view
+            wx:for="{{item.opts}}"
+            wx:for-item="opt"
+            wx:for-index="idx"
+            wx:key="index"
+            class="option-item {{wxs.hasChecked(index+'-'+idx, checkedList) ? 'checked-item' : ''}}"
+            data-index="{{index+'-'+idx}}"
+            data-value="{{opt}}"
+            bindtap="handleCheck"
+          >{{opt}}</view>
+        </view>
+      </view>
+      <!-- 购物车按钮 -->
+      <view class="button-box">
+        <view
+          class="add-cart-button"
+          bindtap="{{wxs.handleAddCart}}"
+          data-list="{{checkedList}}"
+        >加入购物车</view>
       </view>
     </view>
+    <!-- 已添加列表 -->
+    <scroll-view class="added-list-box" scroll-y="{{true}}">
+      <view wx:for="{{addedList}}" wx:key="index" class="added-item">
+        <view class="added-name">{{item.name}}</view>
+        <view class="added-sum">
+          <text class="added-price">{{item.sum}}</text>
+          <text class="added-suffix">元</text>
+        </view>
+        <view class="count-button">
+          <view
+            class="reduce-button"
+            bindtap="handleReduceCount"
+            data-item="{{item}}"
+          >﹣</view>
+          <view class="count">{{item.count}}</view>
+          <view
+            class="add-button"
+            bindtap="handleAddCount"
+            data-item="{{item}}"
+          >＋</view>
+        </view>
+      </view>
+    </scroll-view>
   </view>
 </view>

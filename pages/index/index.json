@@ -3,6 +3,7 @@
     "header": "/components/header/header",
     "list-block": "/components/listBlock/listBlock",
     "slide-menu": "/components/slideMenu/slideMenu",
-    "shop-cart": "/components/shopCart/shopCart"
+    "shop-cart": "/components/shopCart/shopCart",
+    "option-panel": "/components/optionPanel/optionPanel"
   }
 }

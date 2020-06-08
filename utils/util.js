@@ -20,17 +20,21 @@ function handleList(type, list, el){
   if(type == "add"){
     if(has != -1){
       data[has]["count"] += 1
-      data[has]["sum"] += data[has]["salePrice"]
-      data[has]["oriSum"] += data[has]["price"]
+      data[has]["sum"] += (data[has]["salePrice"])
+      data[has]["oriSum"] += (data[has]["price"])
     } else data.push(el)
-    return data
   } else if(type == "reduce") {
     if(data[has]["count"] > 1){
       data[has]["count"] -= 1
-      data[has]["sum"] -= data[has]["salePrice"]
-      data[has]["oriSum"] -= data[has]["price"]
-    } else delete data[has]
+      data[has]["sum"] -= (data[has]["salePrice"])
+      data[has]["oriSum"] -= (data[has]["price"])
+    } else data.splice(has, 1)
   }
+  return data.map(item => {
+    item.sum = parseFloat(item.sum.toFixed(2))
+    item.oriSum = parseFloat(item.oriSum.toFixed(2))
+    return item
+  })
 }
 
 function deepCopy(obj){

@@ -1,5 +1,5 @@
 // pages/index/index.js
-import { throttle } from '../../utils/util'
+import { throttle, handleList } from '../../utils/util'
 const app = getApp()
 
 Page({
@@ -15,9 +15,15 @@ Page({
     menuIndex: 0,
     menuMode: "isHot",
     mainTitle: null,
-    mainMode: "full"
+    mainMode: "full",
+    showOptionPanel: false,
+    optionPanelData: {},
+    carts: []
   },
 
+  /**
+   * 页面的方法
+   */
   handleSlideStatus(){
     let nowSlide = !this.data.slideShow;
     this.setData({
@@ -69,6 +75,20 @@ Page({
         })))
       })
     })
+  },
+  handleSwitchOptions(e){
+    this.setData({
+      showOptionPanel: true,
+      optionPanelData: e.detail
+    })
+  },
+  reactiveCart(e){
+    let result = handleList(
+        e.detail.type,
+        this.data.carts,
+        e.detail.data
+      )
+    this.setData({ carts: result })
   },
 
   /**

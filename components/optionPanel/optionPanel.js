@@ -68,9 +68,21 @@ Component({
         sum: thisFood.salePrice,
         oriSum: thisFood.price
       }
-      this.triggerEvent("addcart", {val: added})
+      this.triggerEvent("cart", {type: "add", data: added})
       let result = handleList("add", this.data.addedList, added)
       this.setData({ addedList: result })
+    },
+    handleAddCount(e){
+      let el = e.target.dataset.item
+      let result = handleList("add", this.data.addedList, el)
+      this.setData({addedList: result})
+      this.triggerEvent("cart", {type: "add", data: el})
+    },
+    handleReduceCount(e){
+      let el = e.target.dataset.item
+      let result = handleList("reduce", this.data.addedList, el)
+      this.setData({addedList: result})
+      this.triggerEvent("cart", {type: "reduce", data: el})
     }
   },
 
