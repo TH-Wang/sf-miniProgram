@@ -45,7 +45,9 @@
       >添加购物车</view>
     </view>
     <view class="added-list-box">
-      <view wx:for="{{addedList}}" wx:key="index">{{item.name}}×{{item.count}}</view>
+      <view wx:for="{{addedList}}" wx:key="index">
+        {{item.name}}×{{item.count}} -- {{item.sum}} -- {{item.oriSum}}
+      </view>
     </view>
   </view>
 </view>

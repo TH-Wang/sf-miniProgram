@@ -1,4 +1,5 @@
 // components/optionPanel/optionPanel.js
+import { handleList } from '../../utils/util'
 const app = getApp()
 
 Component({
@@ -57,21 +58,19 @@ Component({
       })
     },
     handleAddFood(str){
+      let thisFood = this.properties.foodData
       let added = {
-        name: `${this.properties.foodData.fname} (${str})`,
+        name: `${thisFood.fname} (${str})`,
         count: 1,
-        price: this.properties.foodData.price
+        isSale: thisFood.isSale,
+        salePrice: thisFood.salePrice,
+        price: thisFood.price,
+        sum: thisFood.salePrice,
+        oriSum: thisFood.price
       }
-      let has = this.data.addedList.findIndex(item => item.name == added.name)
-      if(has != -1){
-        this.data.addedList[has].count += 1
-      } else {
-        this.data.addedList.push(added)
-      }
-      this.setData({
-        addedList: this.data.addedList
-      })
       this.triggerEvent("addcart", {val: added})
+      let result = handleList("add", this.data.addedList, added)
+      this.setData({ addedList: result })
     }
   },
 

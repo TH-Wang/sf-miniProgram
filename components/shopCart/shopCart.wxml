@@ -14,4 +14,9 @@
       <text class="sale">优惠:\n5.88元</text>
     </view>
   </view>
+  <view class="cart-panel">
+    <!-- <view wx:for="{{cartList}}" wx:key="index">
+      {{item.name}} × {{item.count}} -- {{item.sum}} -- {{item.oriSum}}
+    </view> -->
+  </view>
 </view>

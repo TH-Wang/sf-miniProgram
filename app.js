@@ -1,5 +1,13 @@
 //app.js
 App({
+  globalData: {
+    foodList: null,
+    menuList: null,
+    systemInfo: null,
+    headerStyle: null,
+    cartList: [],
+    proxyCartList: null
+  },
   requestList(){
     var __this__ = this;
     wx.request({
@@ -84,11 +92,5 @@ App({
     this.requestList();
     this.getSystemInfo();
     this.computedHeaderStyle();
-  },
-  globalData: {
-    foodList: null,
-    menuList: null,
-    systemInfo: null,
-    headerStyle: null
   }
 })
