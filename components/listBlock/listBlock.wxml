@@ -10,5 +10,7 @@
     class="food-item"
     wx:for="{{block.list}}" wx:key="id"
     mode="{{mode}}" list="{{item}}"
+    bind:switch="agentForwardSwitch"
+    bind:cart="agentForwardAddcart"
   ></food-item>
 </view>

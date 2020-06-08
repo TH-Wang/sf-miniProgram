@@ -25,6 +25,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    agentForwardSwitch(e){
+      this.triggerEvent("switch", e.detail)
+    },
+    agentForwardAddcart(e){
+      this.triggerEvent("cart", e.detail)
+    }
   }
 })
