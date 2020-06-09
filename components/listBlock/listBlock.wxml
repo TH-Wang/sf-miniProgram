@@ -1,4 +1,6 @@
 <!--components/listBlock/listBlock.wxml-->
+<wxs src="./handle.wxs" module="wxs"></wxs>
+
 <view class="container">
   <view class="title-box {{mode == 'side' ? 'side-title-box' : ''}}">
     <view class="back {{block.mode}}-back"></view>
@@ -8,8 +10,11 @@
   </view>
   <food-item
     class="food-item"
-    wx:for="{{block.list}}" wx:key="id"
-    mode="{{mode}}" list="{{item}}"
+    wx:for="{{block.list}}"
+    wx:key="id"
+    mode="{{mode}}"
+    list="{{item}}"
+    action="{{wxs.handleAction(actionSend, item)}}"
     bind:switch="agentForwardSwitch"
     bind:cart="agentForwardAddcart"
   ></food-item>

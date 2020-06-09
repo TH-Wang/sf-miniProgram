@@ -14,14 +14,15 @@ Component({
     foodData: {
       type: Object,
       defautl: {}
-    }
+    },
+    cartList: null
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    addedList: {},
+    addedList: [],
     checkedList: [],
     mainClass: 'out'
   },
@@ -60,6 +61,7 @@ Component({
     handleAddFood(str){
       let thisFood = this.properties.foodData
       let added = {
+        id: thisFood.id,
         name: `${thisFood.fname} (${str})`,
         count: 1,
         isSale: thisFood.isSale,
@@ -69,19 +71,13 @@ Component({
         oriSum: thisFood.price
       }
       this.triggerEvent("cart", {type: "add", data: added})
-      let result = handleList("add", this.data.addedList, added)
-      this.setData({ addedList: result })
     },
     handleAddCount(e){
       let el = e.target.dataset.item
-      let result = handleList("add", this.data.addedList, el)
-      this.setData({addedList: result})
       this.triggerEvent("cart", {type: "add", data: el})
     },
     handleReduceCount(e){
       let el = e.target.dataset.item
-      let result = handleList("reduce", this.data.addedList, el)
-      this.setData({addedList: result})
       this.triggerEvent("cart", {type: "reduce", data: el})
     }
   },
@@ -94,13 +90,23 @@ Component({
     "foodData": function(val){
       if(Object.keys(val).length == 0) return
       this.data.checkedList = []
-      this.data.addedList = []
       let options = JSON.parse(val.opts);
       options.forEach((item, index) => {
         this.data.checkedList.push(`${index}-0`)
       })
+      this.data.addedList = this.properties.cartList.filter(item => {
+        return item.id == this.properties.foodData.id
+      })
       this.setData({
         checkedList: this.data.checkedList,
+        addedList: this.data.addedList
+      })
+    },
+    "cartList": function(val){
+      this.data.addedList = this.properties.cartList.filter(item => {
+        return item.id == this.properties.foodData.id
+      })
+      this.setData({
         addedList: this.data.addedList
       })
     }

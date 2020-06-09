@@ -1,5 +1,5 @@
 // components/foodItem/foodItem.js
-const page = getCurrentPages()
+const app = getApp()
 
 Component({
   /**
@@ -13,7 +13,8 @@ Component({
     mode: {
       type: String,
       default: "full"
-    }
+    },
+    action: null
   },
 
   /**
@@ -29,17 +30,22 @@ Component({
   methods: {
     handleReduce(){
       if(this.data.count > 0)
-        this.setData({ count: --this.data.count })
         this.triggerEvent(
           "cart", 
-          {type: "reduce", data: {name: this.properties.list.fname}}
+          {
+            type: "reduce",
+            data: {
+              id: this.properties.list.id,
+              name: this.properties.list.fname
+            }
+          }
         )
     },
     handleAdd(){
       let thisFood = this.properties.list;
       if(thisFood.opts == "[]"){
-        this.setData({ count: ++this.data.count })
         let added = {
+          id: thisFood.id,
           name: thisFood.fname,
           count: 1,
           isSale: thisFood.isSale,
@@ -52,6 +58,12 @@ Component({
       } else {
         this.triggerEvent("switch", thisFood)
       }
+    }
+  },
+
+  observers: {
+    "action": function(val){
+      this.setData({ count: val })
     }
   }
 })
