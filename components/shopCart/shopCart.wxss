@@ -18,12 +18,16 @@
   box-shadow: 0 2px 20px -3px rgb(148, 90, 177);
 }
 
-.cart-image{
+.sign-box{
   width: 120rpx;
   height: 120rpx;
   position: absolute;
   top: -40rpx;
   left: 30rpx;
+}
+.cart-image{
+  width: 100%;
+  height: 100%;
 }
 
 .count-sign{
@@ -39,6 +43,14 @@
   position: absolute;
   top: 16rpx;
   right: 4rpx;
+}
+@keyframes zoomInOut {
+  0% {transform: scale(1)}
+  50% {transform: scale(2)}
+  100% {transform: scale(1)}
+}
+.zoom-count-sign{
+  animation: zoomInOut 0.2s forwards;
 }
 
 .cart-button{
@@ -57,10 +69,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s;
 }
+.open-list-cart-button{
+  background-color: rgb(249, 62, 45);
+}
+
 .text{
-  margin-top: -5rpx;
+  margin-top: -4rpx;
   margin-right: 4rpx;
+}
+.order{
+  margin-top: -4rpx;
+  color: white;
 }
 .iconfont{
   font-size: 26rpx;
@@ -108,15 +129,15 @@
 
 .cart-panel{
   width: 100%;
-  height: 700rpx;
+  height: 750rpx;
   transform: translateY(100%);
   transition: all 0.3s;
   position: absolute;
   left: 0;
   bottom: 0;
   z-index: 998;
-  border-top-left-radius: 30rpx;
-  border-top-right-radius: 30rpx;
+  border-top-left-radius: 40rpx;
+  border-top-right-radius: 40rpx;
   box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.3);
   background-color: white;
   overflow: hidden;
@@ -128,17 +149,19 @@
 
 .cart-list-header{
   width: 100%;
-  height: 60rpx;
-  line-height: 60rpx;
+  height: 70rpx;
+  line-height: 70rpx;
   padding: 0rpx 36rpx;
   box-sizing: border-box;
   font-size: 24rpx;
   color: #555;
-  background-color: #f9ebff;
+  background-color: #eee;
 }
 .cart-list-header-name{
   display: inline-block;
   width: 45%;
+  padding-left: 20rpx;
+  box-sizing: border-box;
 }
 .cart-list-header-sum{
   display: inline-block;
@@ -153,12 +176,12 @@
 
 /* 商品列表 */
 .cart-list-box{
-  height: 540rpx;
+  height: 500rpx;
 }
 .cart-item{
-  padding: 24rpx 36rpx;
+  padding: 36rpx 36rpx;
   box-sizing: border-box;
-  border-top: solid 1px #eee;
+  border-bottom: solid 1px #eee;
 }
 .cart-name,
 .cart-sum,

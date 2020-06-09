@@ -2,6 +2,27 @@ function handlePrice(num){
   return num.toFixed(2)
 }
 
+function animateCount(newVal, oldVal, own){
+  if(newVal < oldVal) return
+  var el = own.selectComponent("#count-sign")
+  var start = 1
+  var flag = true
+  function zoom(){
+    if(flag) {
+      start += 0.1
+      if(start >= 1.6) flag = false
+    } else {
+      start -= 0.1
+    }
+    el.setStyle({ "transform": "scale(" + start + ")" })
+    start > 1
+      ? own.requestAnimationFrame(zoom)
+      : start = 1
+  }
+  own.requestAnimationFrame(zoom)
+}
+
 module.exports = {
-  handlePrice: handlePrice
+  handlePrice: handlePrice,
+  animateCount: animateCount
 }
