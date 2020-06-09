@@ -6,18 +6,26 @@
       menus="{{menuList}}"
       show="{{slideShow}}"
       class="slidebar {{slideShow ? 'show-slide' : ''}}"
-      activeMenu="{{menuIndex}}" backMode="{{menuMode}}"
+      activeMenu="{{menuIndex}}"
+      backMode="{{menuMode}}"
+      bind:change="handleSlideChange"
     ></slide-menu>
     <view class="main {{mainMode == 'side' ? 'side-main' : ''}}">
       <scroll-view
         class="scroll"
         scroll-y="{{true}}"
         bindscroll="handleScroll"
+        scroll-into-view="{{'block-'+slideIntoIndex}}"
+        scroll-with-animation="{{true}}"
       >
         <list-block
           class="list-block"
-          wx:for="{{foodList}}" wx:key="typename"
-          block="{{item}}" mode="{{mainMode}}"
+          wx:for="{{foodList}}"
+          wx:key="typename"
+          id="{{'block-'+index}}"
+          block="{{item}}"
+          mode="{{mainMode}}"
+          action="{{action}}"
           data-typename="{{item.typename}}"
           data-mode="{{item.mode}}"
           bind:switch="handleSwitchOptions"
@@ -26,10 +34,14 @@
       </scroll-view>
     </view>
   </view>
-  <shop-cart cartList="{{carts}}"></shop-cart>
+  <shop-cart
+    cartList="{{carts}}"
+    bind:cart="reactiveCart"
+  ></shop-cart>
   <option-panel
     show="{{showOptionPanel}}"
     foodData="{{optionPanelData}}"
+    cartList="{{carts}}"
     bind:cart="reactiveCart"
   ></option-panel>
 </view>

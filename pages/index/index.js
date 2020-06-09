@@ -9,6 +9,7 @@ Page({
    */
   data: {
     slideShow: false,
+    slideIntoIndex: 0,
     menuList: [],
     foodList: [],
     header: null,
@@ -18,7 +19,8 @@ Page({
     mainMode: "full",
     showOptionPanel: false,
     optionPanelData: {},
-    carts: []
+    carts: [],
+    action: []
   },
 
   /**
@@ -30,6 +32,9 @@ Page({
       slideShow: nowSlide,
       mainMode: nowSlide ? "side" : "full"
     })
+  },
+  handleSlideChange(e){
+    this.setData({ slideIntoIndex: e.detail })
   },
   handleScroll: throttle(async function(e){
     let rectsArr = await this.getBoundingRects();
@@ -59,7 +64,7 @@ Page({
         menuIndex: rectsArr.length-1,
         menuMode: "normal"
       })
-  }, 500),
+  }, 300),
   getBoundingRects(){
     return new Promise((resolve, reject) => {
       let headerHeight = app.globalData.headerStyle.totalHeight;
@@ -87,8 +92,11 @@ Page({
         e.detail.type,
         this.data.carts,
         e.detail.data
-      )
-    this.setData({ carts: result })
+    )
+    this.setData({
+      carts: result,
+      action: result
+    })
   },
 
   /**
