@@ -1,12 +1,12 @@
 //app.js
+import { handleList } from './utils/util'
+
 App({
   globalData: {
     foodList: null,
     menuList: null,
     systemInfo: null,
-    headerStyle: null,
-    cartList: [],
-    proxyCartList: null
+    headerStyle: null
   },
   requestList(){
     var __this__ = this;
