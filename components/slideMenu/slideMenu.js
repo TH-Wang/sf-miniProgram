@@ -40,6 +40,7 @@ Component({
         activeMenu: idx,
         backMode: mode
       })
+      this.triggerEvent("change", idx)
     }
   }
 })
