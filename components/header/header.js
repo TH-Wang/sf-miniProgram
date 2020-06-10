@@ -9,6 +9,10 @@ Component({
     title: {
       type: String,
       default: ""
+    },
+    mode: {
+      type: String,
+      default: "main"
     }
   },
 
@@ -37,6 +41,11 @@ Component({
       this.triggerEvent("change-slide", false);
       this.setData({
         slideStatus: !this.data.slideStatus
+      })
+    },
+    handleBack(){
+      wx.navigateBack({
+        delta: -1
       })
     }
   },

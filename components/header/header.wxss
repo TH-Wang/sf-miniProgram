@@ -5,6 +5,11 @@
   display: flex;
   align-items: center;
 }
+
+.main-header{
+  display: flex;
+  align-items: center;
+}
 .menu-icon{
   width: 20px;
   height: 20px;
@@ -36,4 +41,12 @@
 .zoom-out{
   transform: scale(0.5);
   opacity: 0;
+}
+
+/* 返回按钮 */
+.icon-l-back{
+  margin-left: 26rpx;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: Arial, Helvetica, sans-serif;
 }

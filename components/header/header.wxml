@@ -1,13 +1,18 @@
 <!--components/header/header.wxml-->
 <view style="{{headerStyle}}" class="container">
-  <view class="menu-icon">
-    <text class="iconfont icon-l-menu {{slideStatus ? 'zoom-out' : 'zoom-in'}}"
-      bindtap="openSlideMenu"
-    ></text>
-    <text class="iconfont icon-l-error {{slideStatus ? 'zoom-in' : 'zoom-out'}}"
-      bindtap="closeSlideMenu"
-    ></text>
+  <!-- 首页的头部 -->
+  <view class="main-header" wx:if="{{mode == 'main'}}">
+    <view class="menu-icon">
+      <text class="iconfont icon-l-menu {{slideStatus ? 'zoom-out' : 'zoom-in'}}"
+        bindtap="openSlideMenu"
+      ></text>
+      <text class="iconfont icon-l-error {{slideStatus ? 'zoom-in' : 'zoom-out'}}"
+        bindtap="closeSlideMenu"
+      ></text>
+    </view>
+    <text class="iconfont icon-l-search" bindtap="handleOpenSearch"></text>
+    <text class="title">{{title}}</text>
   </view>
-  <text class="iconfont icon-l-search" bindtap="handleOpenSearch"></text>
-  <text class="title">{{title}}</text>
+  <!-- 带返回按钮的头部 -->
+  <text wx:else class="iconfont icon-l-back" bindtap="handleBack">返回</text>
 </view>
