@@ -3,6 +3,7 @@ import { handleList } from './utils/util'
 
 App({
   globalData: {
+    originList: null,
     foodList: null,
     menuList: null,
     systemInfo: null,
@@ -14,7 +15,8 @@ App({
       url: "http://localhost:3000/admin/food/list?storeid=10",
       method: "GET",
       success: function(res){
-        let packData = __this__.packingData(res.data.list)
+        __this__.globalData.originList = res.data.list;
+        let packData = __this__.packingData(res.data.list);
         __this__.globalData.foodList = packData.foodList;
         __this__.globalData.menuList = packData.menuList;
         console.log(res.data);
