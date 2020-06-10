@@ -4,6 +4,10 @@
   80% {transform: translateX(10%);}
   100% {transform: translateX(0%);}
 }
+page{
+  perspective: 300;
+  -webkit-perspective: 300;
+}
 
 .container{
   height: 100%;

@@ -1,6 +1,10 @@
 <!--pages/index/index.wxml-->
 <view class="container">
-  <header title="{{mainTitle}}" bind:change-slide="handleSlideStatus"></header>
+  <header
+    title="{{mainTitle}}"
+    bind:change-slide="handleSlideStatus"
+    bind:open-search="handleOpenSearchPage"
+  ></header>
   <view class="body" style="height:calc(100% - {{header.totalHeight}}px)">
     <slide-menu
       menus="{{menuList}}"
@@ -45,3 +49,9 @@
     bind:cart="reactiveCart"
   ></option-panel>
 </view>
+<search
+  action="{{action}}"
+  show="{{showSearch}}"
+  bind:switch="handleSwitchOptions"
+  bind:cart="reactiveCart"
+></search>

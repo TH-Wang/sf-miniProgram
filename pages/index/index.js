@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    showSearch: false,
     slideShow: false,
     slideIntoIndex: 0,
     menuList: [],
@@ -26,6 +27,9 @@ Page({
   /**
    * 页面的方法
    */
+  handleOpenSearchPage(){
+    this.setData({ showSearch: true })
+  },
   handleSlideStatus(){
     let nowSlide = !this.data.slideShow;
     this.setData({

@@ -4,6 +4,7 @@
     "list-block": "/components/listBlock/listBlock",
     "slide-menu": "/components/slideMenu/slideMenu",
     "shop-cart": "/components/shopCart/shopCart",
-    "option-panel": "/components/optionPanel/optionPanel"
+    "option-panel": "/components/optionPanel/optionPanel",
+    "search": "/components/search/search"
   }
 }
