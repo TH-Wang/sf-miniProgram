@@ -4,7 +4,7 @@
 <view class="container {{show ? 'show-container' : ''}}">
   <view class="header" style="{{headerStyle}}">
     <text class="iconfont icon-l-back" bindtap="handleClose">返回</text>
-  </view>
+  </view> 
   <view class="search-box">
     <text class="iconfont icon-l-search"></text>
     <input class="text-input" placeholder="搜你所想~" bindinput="handleInput" />

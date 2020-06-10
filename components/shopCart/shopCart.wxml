@@ -21,7 +21,7 @@
       <view class="text" wx:if="{{!openCart}}">
         购物车<text class="iconfont icon-l-goToTop"></text>
       </view>
-      <view class="order" wx:else>立即下单</view>
+      <view class="order" wx:else bindtap="handlePlaceOrder">立即下单</view>
     </view>
     <view class="price-box">
       <text class="prefix">￥</text>

@@ -2,6 +2,7 @@
 <view class="container">
   <header
     title="{{mainTitle}}"
+    mode="main"
     bind:change-slide="handleSlideStatus"
     bind:open-search="handleOpenSearchPage"
   ></header>

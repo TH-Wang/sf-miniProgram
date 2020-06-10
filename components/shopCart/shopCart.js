@@ -38,6 +38,28 @@ Component({
     handleAddCount(e){
       let el = e.target.dataset.item
       this.triggerEvent("cart", {type: "add", data: el})
+    },
+    handlePlaceOrder(){
+      var cartList = this.properties.cartList
+      if(cartList.length == 0){
+        wx.showModal({
+          showCancel: false,
+          title: "未选择菜品",
+          content: "请先把菜品加入到购物车，然后才能下单哦~",
+        })
+      } else {
+        wx.navigateTo({
+          url: '/pages/order/order',
+          success: function(res) {
+            res.eventChannel.emit("sendData", {
+              cartList: cartList
+            })
+          },
+          fail: function(err){
+            console.log(err)
+          }
+        })
+      }
     }
   },
 
