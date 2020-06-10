@@ -29,17 +29,20 @@ Component({
    */
   methods: {
     handleReduce(){
-      if(this.data.count > 0)
-        this.triggerEvent(
-          "cart", 
-          {
+      if(this.data.count > 0){
+        let thisFood = this.properties.list
+        if(thisFood.opts == "[]"){
+          this.triggerEvent("cart", {
             type: "reduce",
             data: {
-              id: this.properties.list.id,
-              name: this.properties.list.fname
+              id: thisFood.id,
+              name: thisFood.fname
             }
-          }
-        )
+          })
+        } else {
+          this.triggerEvent("switch", thisFood)
+        }
+      } else return
     },
     handleAdd(){
       let thisFood = this.properties.list;
