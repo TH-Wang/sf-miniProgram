@@ -1,0 +1,28 @@
+<!--components/search/search.wxml-->
+<wxs src="./handle.wxs" module="wxs"></wxs>
+
+<view class="container {{show ? 'show-container' : ''}}">
+  <view class="header" style="{{headerStyle}}">
+    <text class="iconfont icon-l-back" bindtap="handleClose">返回</text>
+  </view>
+  <view class="search-box">
+    <text class="iconfont icon-l-search"></text>
+    <input class="text-input" placeholder="搜你所想~" bindinput="handleInput" />
+  </view>
+  <scroll-view
+    class="result-list"
+    style="{{listHeightStyle}}"
+    scroll-y="{{true}}"
+  >
+    <food-item
+      class="food-item"
+      wx:for="{{searchList}}"
+      wx:key="id"
+      list="{{item}}"
+      mode="full"
+      action="{{wxs.handleAction(actionSend, item)}}"
+      bind:switch="agentForwardSwitch"
+      bind:cart="agentForwardAddcart"
+    ></food-item>
+  </scroll-view>
+</view>

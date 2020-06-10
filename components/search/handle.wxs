@@ -1,0 +1,16 @@
+function handleAction(action, item){
+  if(action.length == 0) return 0
+  var result = action.filter(function(el){
+    return el.id == item.id
+  })
+  if(result.length == 0) return 0
+  else {
+    return result.reduce(function(prev, item){
+      return prev + item.count
+    }, 0)
+  }
+}
+
+module.exports = {
+  handleAction: handleAction
+}

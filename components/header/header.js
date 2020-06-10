@@ -24,6 +24,9 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    handleOpenSearch(){
+      this.triggerEvent("open-search")
+    },
     openSlideMenu(){
       this.triggerEvent("change-slide", true);
       this.setData({
