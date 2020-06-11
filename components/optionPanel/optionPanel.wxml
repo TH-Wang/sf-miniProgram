@@ -61,13 +61,17 @@
             class="reduce-button"
             bindtap="handleReduceCount"
             data-item="{{item}}"
-          >﹣</view>
+          >
+            <text class="iconfont icon-jianshao" data-item="{{item}}"></text>
+          </view>
           <view class="count">{{item.count}}</view>
           <view
             class="add-button"
             bindtap="handleAddCount"
             data-item="{{item}}"
-          >＋</view>
+          >
+            <text class="iconfont icon-zengjia" data-item="{{item}}"></text>
+          </view>
         </view>
       </view>
     </scroll-view>

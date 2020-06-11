@@ -33,10 +33,10 @@ Component({
   methods: {
     handleClose(e){
       if(e.target.id == "mask"){
-        this.setData({ mainClass: 'out' })
-        setTimeout(() => {
-          this.setData({show: false})
-        }, 300)
+        this.setData({ mainClass: 'out', show: false })
+        // setTimeout(() => {
+        //   this.setData({show: false})
+        // }, 300)
       } else {
         return;
       }
@@ -62,6 +62,7 @@ Component({
       let thisFood = this.properties.foodData
       let added = {
         id: thisFood.id,
+        imgurl: thisFood.cover,
         name: `${thisFood.fname} (${str})`,
         count: 1,
         isSale: thisFood.isSale,

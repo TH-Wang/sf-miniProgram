@@ -27,10 +27,10 @@ module.exports = {
     <view class="button-box {{count > 0 ? 'full-button-box' : ''}}">
       <view class="button button-rdc {{count > 0 ? '' : 'hidden-button'}}" 
         bindtap="handleReduce"
-      >－</view>
+      ><text class="iconfont icon-jianshao"></text></view>
       <view class="button button-add {{count > 0 ? '' : 'single-add'}}"
         bindtap="handleAdd"
-      >＋</view>
+      ><text class="iconfont icon-zengjia"></text></view>
       <text class="button-count {{count > 0 ? '' : 'hidden-button'}}"
       >{{count > 0 ? count : ''}}</text>
     </view>

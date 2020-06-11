@@ -19,50 +19,58 @@
       bindtap="handleOpenCart"
     >
       <view class="text" wx:if="{{!openCart}}">
-        购物车<text class="iconfont icon-l-goToTop"></text>
+        购物车<text class="iconfont icon-arrow-up"></text>
       </view>
       <view class="order" wx:else bindtap="handlePlaceOrder">立即下单</view>
     </view>
     <view class="price-box">
-      <text class="prefix">￥</text>
+      <text class="prefix">总计￥</text>
       <text class="price">{{wxs.handlePrice(sumNum)}}</text>
-      <text class="sale">优惠:\n{{wxs.handlePrice(saleSumNum)}}元</text>
+      <text class="sale">{{wxs.handlePrice(oriSum)}}</text>
     </view>
   </view>
-  <view
-    class="cart-mask {{openCart ? 'show-cart-mask' : ''}}"
-    id="cart-mask"
-    bindtap="handleCloseCart"
-  >
-    <view class="cart-panel {{openCart ? 'show-cart' : ''}}">
-      <view class="cart-list-header">
-        <view class="cart-list-header-name">名称</view>
-        <view class="cart-list-header-sum">小计</view>
-        <view class="cart-list-header-count">数量</view>
-      </view>
-      <scroll-view class="cart-list-box" scroll-y="{{true}}">
-        <view wx:for="{{cartList}}" wx:key="index" class="cart-item">
-          <view class="cart-name">{{item.name}}</view>
-          <view class="cart-sum">
-            <text class="cart-price">{{wxs.handlePrice(item.sum)}}</text>
-            <text class="cart-suffix">元</text>
-            <text class="cart-oriSum">{{wxs.handlePrice(item.oriSum)}}</text>
+</view>
+<view
+  class="cart-mask {{openCart ? 'show-cart-mask' : ''}}"
+  id="cart-mask"
+  bindtap="handleCloseCart"
+>
+  <view class="cart-panel {{openCart ? 'show-cart' : ''}}">
+    <view class="cart-list-header">
+      <view class="cart-list-header-name">名称</view>
+      <view class="cart-list-header-sum">小计</view>
+      <view class="cart-list-header-count">数量</view>
+    </view>
+    <scroll-view class="cart-list-box" scroll-y="{{true}}">
+      <view wx:for="{{cartList}}" wx:key="index" class="cart-item">
+        <view
+          class="cart-cover"
+          style="background-image: url({{item.imgurl}})"
+        ></view>
+        <view class="cart-name">{{item.name}}</view>
+        <view class="cart-sum">
+          <text class="cart-price">{{wxs.handlePrice(item.sum)}}</text>
+          <text class="cart-suffix">元</text>
+          <text class="cart-oriSum">{{wxs.handlePrice(item.oriSum)}}</text>
+        </view>
+        <view class="count-button">
+          <view
+            class="reduce-button"
+            bindtap="handleReduceCount"
+            data-item="{{item}}"
+          >
+            <text class="iconfont icon-jianshao" data-item="{{item}}"></text>
           </view>
-          <view class="count-button">
-            <view
-              class="reduce-button"
-              bindtap="handleReduceCount"
-              data-item="{{item}}"
-            >﹣</view>
-            <view class="count">{{item.count}}</view>
-            <view
-              class="add-button"
-              bindtap="handleAddCount"
-              data-item="{{item}}"
-            >＋</view>
+          <view class="count">{{item.count}}</view>
+          <view
+            class="add-button"
+            bindtap="handleAddCount"
+            data-item="{{item}}"
+          >
+            <text class="iconfont icon-zengjia" data-item="{{item}}"></text>
           </view>
         </view>
-      </scroll-view>
-    </view>
+      </view>
+    </scroll-view>
   </view>
 </view>

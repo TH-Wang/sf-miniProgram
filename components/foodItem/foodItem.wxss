@@ -1,4 +1,6 @@
 /* components/foodItem/foodItem.wxss */
+@import '/assets/iconfont/iconfont.wxss';
+
 .container{
   width: 100%;
   padding: 30rpx 50rpx;
@@ -121,28 +123,32 @@
   font-style: italic;
 }
 
-/* 添加减少按钮 */
+/* 数量按钮组 */
 .button-box{
   width: 164rpx;
   height: 50rpx;
+  line-height: 50rpx;
   position: absolute;
   bottom: 16rpx;
   right: 0;
+  z-index: 1;
   border-radius: 30rpx;
   overflow: hidden;
 }
 /* 按钮组展开时，为了避免渲染bug */
 .full-button-box{
-  background-color: #fffa65;
+  background-color: #fff200;
 }
 .button-count, .button{
-  background-color: #fffa65;
+  background-color: #fff200;
   transition: all 0.3s;
+}
+.button .iconfont{
+  font-size: 28rpx;
 }
 .button-count{
   width: 64rpx;
   height: 100%;
-  line-height: 48rpx;
   text-align: center;
   color: #3d3d3d;
   font-size: 32rpx;
@@ -153,24 +159,22 @@
 .button{
   width: 50rpx;
   height: 100%;
-  line-height: 44rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #ff4d4d;
   position: absolute;
   top: 0;
   text-align: center;
-  color: #ff4d4d;
 }
 .button-rdc{
   left: 0;
   border-top-left-radius: 30rpx;
   border-bottom-left-radius: 30rpx;
-  font-size: 46rpx;
 }
 .button-add{
-  line-height: 46rpx;
   right: 0;
   border-top-right-radius: 30rpx;
   border-bottom-right-radius: 30rpx;
-  font-size: 40rpx;
 }
 
 .hidden-button{

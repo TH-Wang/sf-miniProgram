@@ -17,6 +17,7 @@ Component({
     openCart: false,
     cartCount: 0,
     sumNum: 0,
+    oriSum: 0,
     saleSumNum: 0
   },
 
@@ -48,10 +49,15 @@ Component({
           content: "请先把菜品加入到购物车，然后才能下单哦~",
         })
       } else {
+        let orderInfo = {
+          sumNum: this.data.sumNum,
+          oriSum: this.data.oriSum
+        }
         wx.navigateTo({
           url: '/pages/order/order',
           success: function(res) {
             res.eventChannel.emit("sendData", {
+              orderInfo: orderInfo,
               cartList: cartList
             })
           },
@@ -72,6 +78,7 @@ Component({
       this.setData({
         cartCount: count,
         sumNum: sum,
+        oriSum: oriSum,
         saleSumNum: saleSum
       })
     }

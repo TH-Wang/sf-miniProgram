@@ -49,6 +49,7 @@ Component({
       if(thisFood.opts == "[]"){
         let added = {
           id: thisFood.id,
+          imgurl: thisFood.cover,
           name: thisFood.fname,
           count: 1,
           isSale: thisFood.isSale,
