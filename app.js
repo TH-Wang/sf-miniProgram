@@ -3,27 +3,34 @@ import { handleList } from './utils/util'
 
 App({
   globalData: {
+    requestUrl: "http://localhost:3000",
     originList: null,
-    foodList: null,
-    menuList: null,
+    _foodList: [],
+    _menuList: [],
     systemInfo: null,
     headerStyle: null
   },
-  requestList(){
+  requestList(callback){
     var __this__ = this;
     wx.request({
-      url: "http://localhost:3000/admin/food/list?storeid=10",
+      url: `${this.globalData.requestUrl}/admin/food/list?storeid=10`,
       method: "GET",
       success: function(res){
         __this__.globalData.originList = res.data.list;
-        let packData = __this__.packingData(res.data.list);
-        __this__.globalData.foodList = packData.foodList;
-        __this__.globalData.menuList = packData.menuList;
-        console.log(res.data);
-        console.log(packData.foodList);
+        let data = __this__.packingData(res.data.list);
+        callback(data)
       },
       fail: function(err){
-        console.log(err);
+        console.log(err)
+        wx.request({
+          url: 'http://192.168.43.245:3000/admin/food/list?storeid=10',
+          method: 'GET',
+          success: function(res){
+            __this__.globalData.originList = res.data.list;
+            let data = __this__.packingData(res.data.list);
+            callback(data)
+          }
+        })
       }
     })
   },
@@ -62,7 +69,11 @@ App({
     }
     // 合并类别数组
     menuList = [...topping, ...menuList]
-    return { foodList, menuList }
+    this.globalData.foodList = foodList
+    this.globalData.menuList = menuList
+    console.log(this.globalData.foodList)
+    console.log(this.globalData.menuList)
+    return {foodList, menuList}
   },
   getSystemInfo(){
     try {
@@ -91,7 +102,6 @@ App({
     }
   },
   onLaunch: function () {
-    this.requestList();
     this.getSystemInfo();
     this.computedHeaderStyle();
   }

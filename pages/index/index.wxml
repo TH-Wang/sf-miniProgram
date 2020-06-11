@@ -40,6 +40,7 @@
     </view>
   </view>
   <shop-cart
+    class="shop-cart"
     cartList="{{carts}}"
     bind:cart="reactiveCart"
   ></shop-cart>

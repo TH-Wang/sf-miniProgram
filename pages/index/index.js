@@ -107,11 +107,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      menuList: app.globalData.menuList,
-      foodList: app.globalData.foodList,
-      header: app.globalData.headerStyle,
-      mainTitle: app.globalData.menuList[0].typename
+    var __this__ = this
+    app.requestList(function(res){
+      __this__.setData({
+        foodList: res.foodList,
+        menuList: res.menuList,
+        mainTitle: res.menuList[0].typename,
+        header: app.globalData.headerStyle
+      })
     })
   },
 
@@ -119,7 +122,16 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+    // console.log("foodList----------")
+    // console.log(app.globalData.foodList)
+    // console.log("menuList----------")
+    // console.log(app.globalData.menuList)
+    // this.setData({
+    //   menuList: app.globalData.menuList,
+    //   foodList: app.globalData.foodList,
+    //   header: app.globalData.headerStyle,
+    //   // mainTitle: app.globalData.menuList[0].typename
+    // })
   },
 
   /**

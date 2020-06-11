@@ -62,3 +62,12 @@ page{
   /* animation: popUp 0.3s ease forwards; */
   transform: translateX(0);
 }
+
+.shop-cart{
+  /* width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%); */
+  /* z-index: 999; */
+}
